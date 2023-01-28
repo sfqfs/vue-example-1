@@ -1,59 +1,47 @@
-<!--
-一个可以递归渲染自己的嵌套树组件。
-你可以双击一个项目将其转变为一个文件夹。
--->
-
-<script>
-import TreeItem from './components/TreeItem.vue'
-
-const treeData = {
-  name: 'My Tree',
-  children: [
-    { name: 'hello' },
-    { name: 'wat' },
-    {
-      name: 'child folder',
-      children: [
-        {
-          name: 'child folder',
-          children: [{ name: 'hello' }, { name: 'wat' }]
-        },
-        { name: 'hello' },
-        { name: 'wat' },
-        {
-          name: 'child folder',
-          children: [{ name: 'hello' }, { name: 'wat' }]
-        }
-      ]
-    }
-  ]
-}
-
-export default {
-  components: {
-    TreeItem
-  },
-  data() {
-    return {
-      treeData
-    }
-  }
-}
+<script setup>
+import HelloWorld from './components/HelloWorld.vue'
+import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
-  <ul>
-    <TreeItem class="item" :model="treeData"></TreeItem>
-  </ul>
+  <header>
+    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+
+    <div class="wrapper">
+      <HelloWorld msg="You did it!" />
+    </div>
+  </header>
+
+  <main>
+    <TheWelcome />
+  </main>
 </template>
 
-<style>
-.item {
-  cursor: pointer;
+<style scoped>
+header {
   line-height: 1.5;
 }
 
-.bold {
-  font-weight: bold;
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
+}
+
+@media (min-width: 1024px) {
+  header {
+    display: flex;
+    place-items: center;
+    padding-right: calc(var(--section-gap) / 2);
+  }
+
+  .logo {
+    margin: 0 2rem 0 0;
+  }
+
+  header .wrapper {
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+  }
 }
 </style>
